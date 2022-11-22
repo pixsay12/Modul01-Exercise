@@ -1,56 +1,111 @@
-// EXERCISE 1
-let student = [
-    { name: "a", email: "a@gmail.com", age: 14, score: 80 },
-    { name: "b", email: "b@gmail.com", age: 13, score: 78 },
-    { name: "c", email: "c@gmail.com", age: 14, score: 83 },
-  ];
+// class Mobil {
 
-function maxAge(data) {
-return (resultMax = data.reduce((min, p) => (p.age > min ? p.age : min), data[0].age));
-}
-function minAge(data) {
-return (resultMax = data.reduce((min, p) => (p.age < min ? p.age : min), data[0].age));
-}
-  
-// score
-function maxScore(data) {
-return (resultMax = data.reduce((min, p) => (p.score > min ? p.score : min), data[0].score));
-}
-function minScore(data) {
-return (resultMin = data.reduce((min, p) => (p.score < min ? p.score : min), data[0].score));
-}
-  
-// avg score
-var arr = student.map((obj) => obj.score);
+//     constructor(merek) {
+//       this._merekmobil = merek;
+//     }
 
-let avgScore = 0;
-for (i = 0; i < arr.length; i++) {
-avgScore += arr[i];
-}
-let hasil = Math.floor(avgScore / arr.length);
-  
-// avg age
-var arr = student.map((obj) => obj.age);
+//     get merekmobil() {
+//       return this._merekmobil;
+//     }
 
-let avgAge = 0;
-for (i = 0; i < arr.length; i++) {
-avgAge += arr[i];
-}
-let hasilAge = Math.floor(avgAge / arr.length);
+//     set merekmobil(merek) {
+//       this._merekmobil = merek;
+//     }
+//   }
 
-  console.log(hasilAge);
-  console.log(hasil);
-  console.log("highest score: ", maxScore(student));
-  console.log("lowest score: ", minScore(student));
-  console.log("highest age: ", maxAge(student));
-  console.log("lowest age: ", minAge(student));
-  
-//2
+//   mobil = new Mobil("Toyota");
+//   console.log(mobil.merekmobil)
 
-  
-class Product {
-constructor(name, price) {
-    this.name = name;
-    this.price = price;
+//   mobil.merekmobil = "honda"
+//   console.log(mobil.merekmobil)
+
+//   mobil.merekmobil = "Toyota2"
+//   console.log(mobil.merekmobil)
+//   console.log(Mobil);
+
+// class User{
+//     greeting(){
+//         console.log("helo");
+//     }
+// }
+
+// const user = new User();
+// tes = user
+// console.log(tes);
+
+// class user {
+//   name = "";
+
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+//   greeting() {
+//     console.log(`hello ${this.name}`);
+//   }
+// }
+// const userr = new user("hai");
+// userr.greeting();
+
+// Buat Student class agar format bisa digunakan oleh dbStudent
+class Student{
+  constructor(name, email, date, score){
+      this.name = name,
+      this.email = email,
+      this.date = date,
+      this.score = score
+  }
 }
+
+let dbStudent = [
+  new Student("satu", "satu@mail.com", "06-24-2008", 85),
+  new Student("dua", "dua@mail.com", "06-24-2003", 82),
+  new Student("tiga", "tiga@mail.com", "06-24-2004", 81),
+  new Student("empat", "empat@mail.com", "06-24-2009", 80),
+]
+
+let calculateStudent = (arr) =>{
+  // Flow -> load data dari index 0-terakhir, looping sebanyak data, bandingkan nilai dari index 0-terakhir
+  // Highest score
+  highestScore = arr[0].score;
+  for (i = 1; i < arr.length; i++) {
+      if (arr[i].score > highestScore) {
+        highestScore = arr[i].score;
+      }
+    }
+
+  // Lowest Score
+  lowestScore = arr[0].score;
+  for (i = 1; i < arr.length; i++) {
+      if (arr[i].score < lowestScore) {
+          lowestScore = arr[i].score;
+      }
+  }
+
+  // Average Score
+  let avgScore = 0;
+  for (i = 0; i < arr.length; i++) {
+      avgScore += arr[i].score;
+  }
+  avgScore = avgScore / arr.length;
+
+
+
+  // kurang lengkap -> kalau dia highest, lowest, avg -> show data komplit, contoh nama: satu, nilai:85, email:a@a, uumur:"22-03-98" convert ke angka
+  // Kurang Age
+
+  let result = {
+      Score:{
+          highestScore,
+          lowestScore,
+          avgScore,
+      },
+      // Age:{
+      //     highestAge,
+      //     lowestAge,
+      //     avgAge,
+      // },
+  };
+  return result;
 }
+console.log(calculateStudent(dbStudent));
